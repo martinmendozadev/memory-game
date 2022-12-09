@@ -1,10 +1,6 @@
 // eslint-disable-next-line import/prefer-default-export
 export const IMAGES_URLS = [
   {
-    name: 'cover',
-    url: 'https://res.cloudinary.com/dtezbna78/image/upload/v1670565809/memory-game/cover_ocjwyl.png',
-  },
-  {
     name: 'image1',
     url: 'https://res.cloudinary.com/dtezbna78/image/upload/v1670565809/memory-game/009_aqwpot.png',
   },
