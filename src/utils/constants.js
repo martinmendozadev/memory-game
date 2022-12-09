@@ -41,3 +41,6 @@ export const IMAGES_URLS = [
     url: 'https://res.cloudinary.com/dtezbna78/image/upload/v1670565808/memory-game/003_juo3wp.png',
   },
 ];
+
+export const COVER_IMAGE =
+  'https://res.cloudinary.com/dtezbna78/image/upload/v1670565809/memory-game/cover_ocjwyl.png';
