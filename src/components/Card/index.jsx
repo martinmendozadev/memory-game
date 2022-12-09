@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Box, Image } from '@chakra-ui/react';
 
 import { COVER_IMAGE } from '@utils/constants';
+import CardCover from '@components/CardCover';
 
 function Card({ url, name }) {
   const [imageSRC, setImageSRC] = useState(url);
@@ -21,13 +22,7 @@ function Card({ url, name }) {
           onClick={onHandleClick}
         />
       ) : (
-        <Image
-          alt={name}
-          cursor="pointer"
-          objectFit="cover"
-          src={COVER_IMAGE}
-          onClick={onHandleClick}
-        />
+        <CardCover onClick={onHandleClick} />
       )}
     </Box>
   );
