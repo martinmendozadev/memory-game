@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { FaRedo } from 'react-icons/fa';
 
 import Card from '@components/Card';
+import Alert from '@components/Alert';
 import {
   IMAGES_URLS,
   TIME_TO_USER_WATCH_CARDS_ON_ERROR,
@@ -86,18 +87,12 @@ export default function Home() {
         <title>{t('header.title')}</title>
       </Head>
       <Flex align="center" direction="column" mb={6}>
-        <Flex justifyContent="center" w="100%" bgColor="green.200">
-          {!cardSelectedOne && !cardSelectedTwo && (
-            <Text as="i" color="black" fontWeight="semibold">
-              {t('help.selectFirstCard')}
-            </Text>
-          )}
-          {cardSelectedOne && !cardSelectedTwo && (
-            <Text as="i" color="black" fontWeight="semibold">
-              {t('help.selectSecondCard')}
-            </Text>
-          )}
-        </Flex>
+        {!cardSelectedOne && !cardSelectedTwo && (
+          <Alert content={t('help.selectFirstCard')} />
+        )}
+        {cardSelectedOne && !cardSelectedTwo && (
+          <Alert content={t('help.selectSecondCard')} />
+        )}
         <Flex justify="space-evenly" wrap="wrap">
           {cards?.map((card) => (
             <Card
