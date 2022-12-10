@@ -11,10 +11,10 @@
   },
   "help": {
     "errorMatchingCards": "Lo sentimos, las cartas no son iguales",
-    "selectFirstCard": "Seleccina la primera carta",
+    "selectFirstCard": "Selecciona la primera carta",
     "selectSecondCard": "Selecciona la segunda carta"
   },
   "footer": {
-    "caption": "© 2023 Martin Mendoza. Todos los derechos reservados"
+    "caption": "© 2022 Martin Mendoza. Todos los derechos reservados"
   }
 }
