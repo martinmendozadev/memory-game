@@ -10,6 +10,7 @@
     "title": "Memorama"
   },
   "help": {
+    "errorMatchingCards": "Lo sentimos, las cartas no son iguales",
     "selectFirstCard": "Seleccina la primera carta",
     "selectSecondCard": "Selecciona la segunda carta"
   },

@@ -10,6 +10,7 @@
     "title": "Memory Game"
   },
   "help": {
+    "errorMatchingCards": "Sorry, cards are not equals",
     "selectFirstCard": "Select the first card",
     "selectSecondCard": "Select the second card"
   },
