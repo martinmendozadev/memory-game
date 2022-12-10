@@ -9,13 +9,16 @@ import {
 import { useAppContext } from '@context/appContext';
 
 export default function Home() {
-  const { setIsLoading } = useAppContext();
+  const { isLoading, setIsLoading } = useAppContext();
   const [cards, setCards] = useState([]);
   const [cardSelectedOne, setCardSelectedOne] = useState(null);
   const [cardSelectedTwo, setCardSelectedTwo] = useState(null);
 
-  const setCardFlipped = (card) =>
-    cardSelectedOne ? setCardSelectedTwo(card) : setCardSelectedOne(card);
+  const setCardFlipped = (card) => {
+    if (!isLoading) {
+      cardSelectedOne ? setCardSelectedTwo(card) : setCardSelectedOne(card);
+    }
+  };
 
   const startGame = () => {
     const cardsGame = [...IMAGES_URLS, ...IMAGES_URLS]
@@ -48,8 +51,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
     if (cardSelectedOne && cardSelectedTwo) {
+      setIsLoading(true);
       if (cardSelectedOne.key === cardSelectedTwo.key) {
         setCards((prevCards) =>
           prevCards?.map((item) => {
@@ -63,13 +66,11 @@ export default function Home() {
       }
 
       setTimeout(() => {
-        setIsLoading(true);
         setCardSelectedOne(null);
         setCardSelectedTwo(null);
         setIsLoading(false);
       }, TIME_TO_USER_WATCH_CARDS_ON_ERROR);
     }
-    setIsLoading(false);
   }, [cardSelectedOne, cardSelectedTwo]);
 
   return (
