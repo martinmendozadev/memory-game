@@ -12,10 +12,25 @@ export default function Home() {
   const setCardFlipped = (card) =>
     cardSelectedOne ? setCardSelectedTwo(card) : setCardSelectedOne(card);
 
+  const onRestartGameHandle = () => {
+    setCards((prevCards) =>
+      prevCards.map((card) => {
+        if (card.matched) {
+          return { ...card, matched: false };
+        }
+
+        return card;
+      })
+    );
+
+    setCardSelectedOne(null);
+    setCardSelectedTwo(null);
+  };
+
   useEffect(() => {
     const allFruits = [...IMAGES_URLS, ...IMAGES_URLS]
       .sort(() => Math.random() - 0.5)
-      .map((item) => ({ ...item, id: Math.random() }));
+      .map((item) => ({ ...item, id: Math.random(), matched: false }));
 
     setCards(allFruits);
   }, []);
@@ -58,7 +73,11 @@ export default function Home() {
         ))}
       </Flex>
       <Box>
-        <Button colorScheme="teal" mt={6} size="md">
+        <Button
+          colorScheme="teal"
+          mt={6}
+          size="md"
+          onClick={onRestartGameHandle}>
           Restart
         </Button>
       </Box>
