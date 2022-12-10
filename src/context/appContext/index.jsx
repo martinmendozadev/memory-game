@@ -12,6 +12,7 @@ const AppContext = createContext();
 
 export const initialState = {
   isLoading: false,
+  isErrorMatching: false,
 };
 
 export function AppContextProvider({ value, initialValues, children }) {
@@ -29,13 +30,23 @@ export function AppContextProvider({ value, initialValues, children }) {
     []
   );
 
+  const setIsErrorMatching = useCallback(
+    (isErrorMatching) =>
+      dispatch({
+        type: ACTIONS.SET_ERROR_MATCHING_CARDS,
+        payload: { isErrorMatching },
+      }),
+    []
+  );
+
   const contextState = useMemo(
     () => ({
       ...state,
       ...value,
       setIsLoading,
+      setIsErrorMatching,
     }),
-    [state, value, setIsLoading]
+    [state, value, setIsLoading, setIsErrorMatching]
   );
 
   return (
