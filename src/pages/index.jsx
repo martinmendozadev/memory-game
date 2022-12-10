@@ -22,7 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     if (cardSelectedOne && cardSelectedTwo) {
-      if (cardSelectedOne.src === cardSelectedTwo.src) {
+      if (cardSelectedOne.key === cardSelectedTwo.key) {
         setCards((prevCards) =>
           prevCards?.map((item) => {
             if (item.src === cardSelectedOne.src) {
@@ -46,7 +46,7 @@ export default function Home() {
           <Card
             card={card}
             setCardFlipped={setCardFlipped}
-            key={`${card.name}`}
+            key={`${card.id}`}
             name={card.name}
             url={card.url}
             flipped={
