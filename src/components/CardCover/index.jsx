@@ -2,14 +2,14 @@ import { Image } from '@chakra-ui/react';
 
 import { COVER_IMAGE } from '@utils/constants';
 
-function CardCover({ onClick }) {
+function CardCover({ flipped }) {
   return (
     <Image
       alt="cover"
-      cursor="pointer"
       objectFit="cover"
+      position="absolute"
       src={COVER_IMAGE}
-      onClick={onClick}
+      transform={!flipped && 'rotateY(180deg)'}
     />
   );
 }
