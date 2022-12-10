@@ -6,6 +6,7 @@ import { FaRedo } from 'react-icons/fa';
 import Card from '@components/Card';
 import Alert from '@components/Alert';
 import {
+  ALERT_TYPES,
   IMAGES_URLS,
   TIME_TO_USER_WATCH_CARDS_ON_ERROR,
 } from '@utils/constants';
@@ -13,7 +14,8 @@ import { useAppContext } from '@context/appContext';
 
 export default function CardsContainer() {
   const { t } = useTranslation('common');
-  const { isLoading, setIsLoading } = useAppContext();
+  const { isLoading, isErrorMatching, setIsLoading, setIsErrorMatching } =
+    useAppContext();
   const [cards, setCards] = useState([]);
   const [cardSelectedOne, setCardSelectedOne] = useState(null);
   const [cardSelectedTwo, setCardSelectedTwo] = useState(null);
@@ -69,11 +71,14 @@ export default function CardsContainer() {
             return item;
           })
         );
+      } else {
+        setIsErrorMatching(true);
       }
 
       setTimeout(() => {
         setCardSelectedOne(null);
         setCardSelectedTwo(null);
+        setIsErrorMatching(false);
         setIsLoading(false);
       }, TIME_TO_USER_WATCH_CARDS_ON_ERROR);
     }
@@ -82,11 +87,18 @@ export default function CardsContainer() {
   return (
     <Flex align="center" direction="column" mb={6}>
       {!cardSelectedOne && !cardSelectedTwo && (
-        <Alert content={t('help.selectFirstCard')} />
+        <Alert content={t('help.selectFirstCard')} type={ALERT_TYPES.info} />
       )}
       {cardSelectedOne && !cardSelectedTwo && (
-        <Alert content={t('help.selectSecondCard')} />
+        <Alert content={t('help.selectSecondCard')} type={ALERT_TYPES.info} />
       )}
+      {isErrorMatching && (
+        <Alert
+          content={t('help.errorMatchingCards')}
+          type={ALERT_TYPES.error}
+        />
+      )}
+
       <Flex justify="space-evenly" wrap="wrap">
         {cards?.map((card) => (
           <Card
