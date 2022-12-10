@@ -1,8 +1,13 @@
 import { Flex, Text } from '@chakra-ui/react';
 
-export default function Alert({ content }) {
+import { ALERT_TYPES } from '@utils/constants';
+
+export default function Alert({ content, type }) {
   return (
-    <Flex justifyContent="center" w="100%" bgColor="green.200">
+    <Flex
+      justifyContent="center"
+      w="100%"
+      bgColor={type === ALERT_TYPES.error ? 'red.500' : 'green.200'}>
       <Text as="i" color="black" fontWeight="semibold">
         {content}
       </Text>
