@@ -15,11 +15,11 @@ function Card({ card, flipped, name, setCardFlipped, url }) {
       align="center"
       cursor={isLoading ? 'not-allowed' : 'pointer'}
       justify="center"
-      h={40}
+      h={32}
       m={6}
       position="relative"
       onClick={onClickCardHandle}
-      w={32}>
+      w={24}>
       <Image
         alt={name}
         objectFit="cover"
