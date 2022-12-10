@@ -9,7 +9,7 @@ function CardCover({ flipped }) {
       objectFit="cover"
       position="absolute"
       src={COVER_IMAGE}
-      transform={!flipped && 'rotateY(180deg)'}
+      display={flipped ? 'none' : 'block'}
     />
   );
 }
