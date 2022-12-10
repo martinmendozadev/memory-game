@@ -6,8 +6,10 @@ import {
   IMAGES_URLS,
   TIME_TO_USER_WATCH_CARDS_ON_ERROR,
 } from '@utils/constants';
+import { useAppContext } from '@context/appContext';
 
 export default function Home() {
+  const { setIsLoading } = useAppContext();
   const [cards, setCards] = useState([]);
   const [cardSelectedOne, setCardSelectedOne] = useState(null);
   const [cardSelectedTwo, setCardSelectedTwo] = useState(null);
@@ -40,10 +42,13 @@ export default function Home() {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     startGame();
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     if (cardSelectedOne && cardSelectedTwo) {
       if (cardSelectedOne.key === cardSelectedTwo.key) {
         setCards((prevCards) =>
@@ -58,10 +63,13 @@ export default function Home() {
       }
 
       setTimeout(() => {
+        setIsLoading(true);
         setCardSelectedOne(null);
         setCardSelectedTwo(null);
+        setIsLoading(false);
       }, TIME_TO_USER_WATCH_CARDS_ON_ERROR);
     }
+    setIsLoading(false);
   }, [cardSelectedOne, cardSelectedTwo]);
 
   return (

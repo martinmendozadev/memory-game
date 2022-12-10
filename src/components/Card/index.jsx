@@ -1,8 +1,11 @@
 import { Flex, Image } from '@chakra-ui/react';
 
 import CardCover from '@components/CardCover';
+import { useAppContext } from '@context/appContext';
 
 function Card({ card, flipped, name, setCardFlipped, url }) {
+  const { isLoading } = useAppContext();
+
   const onClickCardHandle = () => {
     setCardFlipped(card);
   };
@@ -10,7 +13,7 @@ function Card({ card, flipped, name, setCardFlipped, url }) {
   return (
     <Flex
       align="center"
-      cursor="pointer"
+      cursor={isLoading ? 'not-allowed' : 'pointer'}
       justify="center"
       h={40}
       m={6}
