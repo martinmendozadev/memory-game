@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import { Box, Button, Flex } from '@chakra-ui/react';
 
 import Card from '@components/Card';
-import { IMAGES_URLS } from '@utils/constants';
+import {
+  IMAGES_URLS,
+  TIME_TO_USER_WATCH_CARDS_ON_ERROR,
+} from '@utils/constants';
 
 export default function Home() {
   const [cards, setCards] = useState([]);
@@ -49,8 +52,10 @@ export default function Home() {
         );
       }
 
-      setCardSelectedOne(null);
-      setCardSelectedTwo(null);
+      setTimeout(() => {
+        setCardSelectedOne(null);
+        setCardSelectedTwo(null);
+      }, TIME_TO_USER_WATCH_CARDS_ON_ERROR);
     }
   }, [cardSelectedOne, cardSelectedTwo]);
 
