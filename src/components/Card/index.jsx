@@ -2,8 +2,10 @@ import { Flex, Image } from '@chakra-ui/react';
 
 import CardCover from '@components/CardCover';
 
-function Card({ url, name, flipped }) {
-  const onHandleClick = () => {};
+function Card({ card, flipped, name, setCardFlipped, url }) {
+  const onClickCardHandle = () => {
+    setCardFlipped(card);
+  };
 
   return (
     <Flex
@@ -13,7 +15,7 @@ function Card({ url, name, flipped }) {
       h={40}
       m={6}
       position="relative"
-      onClick={onHandleClick}
+      onClick={onClickCardHandle}
       transform={!flipped && 'rotateY(180deg)'}
       w={32}>
       <Image
