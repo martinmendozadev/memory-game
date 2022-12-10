@@ -21,20 +21,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (
-      cardSelectedOne &&
-      cardSelectedTwo &&
-      cardSelectedOne.src === cardSelectedTwo.src
-    ) {
-      setCards((prevCards) =>
-        prevCards?.map((item) => {
-          if (item.src === cardSelectedOne.src) {
-            return { ...item, matched: true };
-          }
+    if (cardSelectedOne && cardSelectedTwo) {
+      if (cardSelectedOne.src === cardSelectedTwo.src) {
+        setCards((prevCards) =>
+          prevCards?.map((item) => {
+            if (item.src === cardSelectedOne.src) {
+              return { ...item, matched: true };
+            }
 
-          return item;
-        })
-      );
+            return item;
+          })
+        );
+      }
 
       setCardSelectedOne(null);
       setCardSelectedTwo(null);
