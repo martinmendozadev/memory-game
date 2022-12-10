@@ -1,5 +1,6 @@
 export const ACTIONS = {
   SET_IS_LOADING: 'SET_IS_LOADING',
+  SET_ERROR_MATCHING_CARDS: 'SET_ERROR_MATCHING_CARDS',
 };
 
 export function appContextReducer(state, { type: actionType, payload }) {
@@ -9,6 +10,13 @@ export function appContextReducer(state, { type: actionType, payload }) {
       return {
         ...state,
         isLoading,
+      };
+    }
+    case ACTIONS.SET_ERROR_MATCHING_CARDS: {
+      const { isErrorMatching } = payload;
+      return {
+        ...state,
+        isErrorMatching,
       };
     }
     default: {

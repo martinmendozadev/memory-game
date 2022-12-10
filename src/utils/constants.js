@@ -50,7 +50,7 @@ export const IMAGES_URLS = [
 export const COVER_IMAGE =
   'https://res.cloudinary.com/dtezbna78/image/upload/v1670565809/memory-game/cover_ocjwyl.png';
 
-export const TIME_TO_USER_WATCH_CARDS_ON_ERROR = 1000;
+export const TIME_TO_USER_WATCH_CARDS_ON_ERROR = 1500;
 
 export const SOCIAL_MEDIA = {
   email: {
@@ -69,4 +69,9 @@ export const SOCIAL_MEDIA = {
     label: 'Telegram',
     href: 'https://t.me/martinmendozadev',
   },
+};
+
+export const ALERT_TYPES = {
+  info: 'info',
+  error: 'error',
 };
