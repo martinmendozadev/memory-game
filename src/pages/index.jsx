@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Button, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { FaRedo } from 'react-icons/fa';
 
 import Card from '@components/Card';
 import {
@@ -101,7 +102,8 @@ export default function Home() {
           colorScheme="teal"
           mt={6}
           size="md"
-          onClick={onRestartGameHandle}>
+          onClick={onRestartGameHandle}
+          rightIcon={<FaRedo />}>
           {t('buttons.restart')}
         </Button>
       </Box>
