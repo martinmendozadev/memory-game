@@ -1,8 +1,8 @@
-# Memory Grame
+# Memory Game
 
 [--> Go Play Here!](https://memory-game-martinmendozadev.vercel.app/ 'Go play')
 
-## About Memory Gamge
+## About Memory Game
 
 This us a memory game on web version
 
