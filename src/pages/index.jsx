@@ -18,8 +18,10 @@ export default function Home() {
   const [cardSelectedTwo, setCardSelectedTwo] = useState(null);
 
   const setCardFlipped = (card) => {
-    if (!isLoading) {
-      cardSelectedOne ? setCardSelectedTwo(card) : setCardSelectedOne(card);
+    if (!isLoading && cardSelectedOne) {
+      setCardSelectedTwo(card);
+    } else if (!isLoading && !cardSelectedTwo) {
+      setCardSelectedOne(card);
     }
   };
 
