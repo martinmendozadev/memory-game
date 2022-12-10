@@ -6,6 +6,11 @@ import { IMAGES_URLS } from '@utils/constants';
 
 export default function Home() {
   const [cards, setCards] = useState([]);
+  const [cardSelectedOne, setCardSelectedOne] = useState(null);
+  const [cardSelectedTwo, setCardSelectedTwo] = useState(null);
+
+  const setCardFlipped = (card) =>
+    cardSelectedOne ? setCardSelectedTwo(card) : setCardSelectedOne(card);
 
   useEffect(() => {
     const allFruits = [...IMAGES_URLS, ...IMAGES_URLS]
@@ -15,15 +20,42 @@ export default function Home() {
     setCards(allFruits);
   }, []);
 
+  useEffect(() => {
+    if (
+      cardSelectedOne &&
+      cardSelectedTwo &&
+      cardSelectedOne.src === cardSelectedTwo.src
+    ) {
+      setCards((prevCards) =>
+        prevCards?.map((item) => {
+          if (item.src === cardSelectedOne.src) {
+            return { ...item, matched: true };
+          }
+
+          return item;
+        })
+      );
+
+      setCardSelectedOne(null);
+      setCardSelectedTwo(null);
+    }
+  }, [cardSelectedOne, cardSelectedTwo]);
+
   return (
     <Flex align="center" direction="column">
       <Flex justify="space-evenly" wrap="wrap">
         {cards?.map((card) => (
           <Card
+            card={card}
+            setCardFlipped={setCardFlipped}
             key={`${card.name}`}
-            url={card.url}
             name={card.name}
-            flipped={false}
+            url={card.url}
+            flipped={
+              card === cardSelectedOne ||
+              card === cardSelectedTwo ||
+              card?.matched
+            }
           />
         ))}
       </Flex>
