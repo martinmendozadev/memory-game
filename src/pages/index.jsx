@@ -15,6 +15,14 @@ export default function Home() {
   const setCardFlipped = (card) =>
     cardSelectedOne ? setCardSelectedTwo(card) : setCardSelectedOne(card);
 
+  const startGame = () => {
+    const cardsGame = [...IMAGES_URLS, ...IMAGES_URLS]
+      .sort(() => Math.random() - 0.5)
+      .map((item) => ({ ...item, id: Math.random(), matched: false }));
+
+    setCards(cardsGame);
+  };
+
   const onRestartGameHandle = () => {
     setCards((prevCards) =>
       prevCards.map((card) => {
@@ -28,14 +36,11 @@ export default function Home() {
 
     setCardSelectedOne(null);
     setCardSelectedTwo(null);
+    startGame();
   };
 
   useEffect(() => {
-    const allFruits = [...IMAGES_URLS, ...IMAGES_URLS]
-      .sort(() => Math.random() - 0.5)
-      .map((item) => ({ ...item, id: Math.random(), matched: false }));
-
-    setCards(allFruits);
+    startGame();
   }, []);
 
   useEffect(() => {
