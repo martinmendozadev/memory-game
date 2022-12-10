@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { Box, Button, Flex } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -80,34 +81,39 @@ export default function Home() {
   }, [cardSelectedOne, cardSelectedTwo]);
 
   return (
-    <Flex align="center" direction="column">
-      <Flex justify="space-evenly" wrap="wrap">
-        {cards?.map((card) => (
-          <Card
-            card={card}
-            setCardFlipped={setCardFlipped}
-            key={`${card.id}`}
-            name={card.name}
-            url={card.url}
-            flipped={
-              card === cardSelectedOne ||
-              card === cardSelectedTwo ||
-              card.matched === true
-            }
-          />
-        ))}
+    <>
+      <Head>
+        <title>{t('header.title')}</title>
+      </Head>
+      <Flex align="center" direction="column">
+        <Flex justify="space-evenly" wrap="wrap">
+          {cards?.map((card) => (
+            <Card
+              card={card}
+              setCardFlipped={setCardFlipped}
+              key={`${card.id}`}
+              name={card.name}
+              url={card.url}
+              flipped={
+                card === cardSelectedOne ||
+                card === cardSelectedTwo ||
+                card.matched === true
+              }
+            />
+          ))}
+        </Flex>
+        <Box>
+          <Button
+            colorScheme="teal"
+            mt={6}
+            size="md"
+            onClick={onRestartGameHandle}
+            rightIcon={<FaRedo />}>
+            {t('buttons.restart')}
+          </Button>
+        </Box>
       </Flex>
-      <Box>
-        <Button
-          colorScheme="teal"
-          mt={6}
-          size="md"
-          onClick={onRestartGameHandle}
-          rightIcon={<FaRedo />}>
-          {t('buttons.restart')}
-        </Button>
-      </Box>
-    </Flex>
+    </>
   );
 }
 
