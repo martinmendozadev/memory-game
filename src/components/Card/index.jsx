@@ -1,10 +1,34 @@
-import { Box, Image } from '@chakra-ui/react';
+import { Flex, Image } from '@chakra-ui/react';
 
-function Card({ url, name }) {
+import CardCover from '@components/CardCover';
+import { useAppContext } from '@context/appContext';
+
+function Card({ card, flipped, name, setCardFlipped, url }) {
+  const { isLoading } = useAppContext();
+
+  const onClickCardHandle = () => {
+    setCardFlipped(card);
+  };
+
   return (
-    <Box m={6} h={40} w={32}>
-      <Image alt={name} cursor="pointer" objectFit="cover" src={url} />
-    </Box>
+    <Flex
+      align="center"
+      cursor={isLoading ? 'not-allowed' : 'pointer'}
+      justify="center"
+      h={32}
+      m={6}
+      position="relative"
+      onClick={onClickCardHandle}
+      w={24}>
+      <Image
+        alt={name}
+        objectFit="cover"
+        position="absolute"
+        src={url}
+        display={flipped ? 'block' : 'none'}
+      />
+      <CardCover flipped={flipped} />
+    </Flex>
   );
 }
 

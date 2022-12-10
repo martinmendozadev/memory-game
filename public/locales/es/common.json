@@ -1,0 +1,15 @@
+{
+  "buttons": {
+    "changeLanguageTooltip": "Cambiar Idioma",
+    "theme": "Color de Tema",
+    "themeTooltip": "Cambiar tema",
+    "tooltip": "Un tooltip",
+    "restart": "Reiniciar"
+  },
+  "header": {
+    "title": "Memorama"
+  },
+  "footer": {
+    "caption": "© 2023 Martin Mendoza. Todos los derechos reservados"
+  }
+}

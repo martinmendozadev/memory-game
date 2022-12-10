@@ -1,0 +1,15 @@
+{
+  "buttons": {
+    "changeLanguageTooltip": "Change language",
+    "theme": "Theme",
+    "themeTooltip": "Change Theme",
+    "tooltip": "A tooltip",
+    "restart": "Restart"
+  },
+  "header": {
+    "title": "Memory Game"
+  },
+  "footer": {
+    "caption": "© 2023 Martin Mendoza. All rights reserved"
+  }
+}
