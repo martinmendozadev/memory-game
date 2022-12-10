@@ -70,3 +70,8 @@ export const SOCIAL_MEDIA = {
     href: 'https://t.me/martinmendozadev',
   },
 };
+
+export const ALERT_TYPES = {
+  info: 'info',
+  error: 'error',
+};
