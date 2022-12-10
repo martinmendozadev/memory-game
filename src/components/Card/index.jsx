@@ -12,15 +12,16 @@ function Card({ url, name, flipped }) {
       justify="center"
       h={40}
       m={6}
+      position="relative"
       onClick={onHandleClick}
-      w={32}
-      transform={flipped && 'rotateY(180deg)'}>
+      transform={!flipped && 'rotateY(180deg)'}
+      w={32}>
       <Image
         alt={name}
         objectFit="cover"
-        src={url}
-        transform={!flipped && 'rotateY(180deg)'}
         position="absolute"
+        src={url}
+        transform={flipped && 'rotateY(180deg)'}
       />
       <CardCover flipped={flipped} />
     </Flex>
