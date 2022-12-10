@@ -48,7 +48,7 @@ export default function Home() {
       if (cardSelectedOne.key === cardSelectedTwo.key) {
         setCards((prevCards) =>
           prevCards?.map((item) => {
-            if (item.src === cardSelectedOne.src) {
+            if (item.key === cardSelectedOne.key) {
               return { ...item, matched: true };
             }
 
@@ -77,7 +77,7 @@ export default function Home() {
             flipped={
               card === cardSelectedOne ||
               card === cardSelectedTwo ||
-              card?.matched
+              card.matched === true
             }
           />
         ))}
