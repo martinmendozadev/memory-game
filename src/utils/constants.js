@@ -49,3 +49,5 @@ export const IMAGES_URLS = [
 
 export const COVER_IMAGE =
   'https://res.cloudinary.com/dtezbna78/image/upload/v1670565809/memory-game/cover_ocjwyl.png';
+
+export const TIME_TO_USER_WATCH_CARDS_ON_ERROR = 1000;
