@@ -2,5 +2,8 @@
   "title": "Memory Game",
   "buttons": {
     "restart": "Restart"
+  },
+  "footer": {
+    "caption": "© 2023 Martin Mendoza. All rights reserved"
   }
 }

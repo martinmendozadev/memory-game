@@ -2,5 +2,8 @@
   "title": "Memorama",
   "buttons": {
     "restart": "Reiniciar"
+  },
+  "footer": {
+    "caption": "© 2023 Martin Mendoza. Todos los derechos reservados"
   }
 }
