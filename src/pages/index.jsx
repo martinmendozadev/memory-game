@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Button, Flex } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Card from '@components/Card';
 import {
@@ -9,6 +11,7 @@ import {
 import { useAppContext } from '@context/appContext';
 
 export default function Home() {
+  const { t } = useTranslation('common');
   const { isLoading, setIsLoading } = useAppContext();
   const [cards, setCards] = useState([]);
   const [cardSelectedOne, setCardSelectedOne] = useState(null);
@@ -97,9 +100,17 @@ export default function Home() {
           mt={6}
           size="md"
           onClick={onRestartGameHandle}>
-          Restart
+          {t('buttons.restart')}
         </Button>
       </Box>
     </Flex>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
 }
